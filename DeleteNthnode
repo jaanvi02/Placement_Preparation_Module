@@ -1,0 +1,40 @@
+class Solution{
+public:
+int length(Node* head) {
+        int c = 0;
+        while (head != NULL) {
+            head = head->next;
+            c++;
+        }
+        return c;
+    }
+    int getNthFromLast(Node *head, int n)
+    {
+        
+           int len = length(head);
+           if(n>len){
+            return -1;
+        }
+        len -= n;
+        
+        
+        if (len == 0) {
+            Node* newHead = head->next;
+            head->next = nullptr;
+            return head->data;
+        }
+        
+        Node* prev = nullptr;
+        Node* temp = head;
+        int c = 1;
+        while (c <= len) {
+            prev = temp;
+            temp = temp->next;
+            c++;
+        }
+     
+        prev->next = temp->next;
+        temp->next = nullptr;
+       return temp->data;
+    }
+};
