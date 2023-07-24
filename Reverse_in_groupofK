@@ -1,0 +1,36 @@
+class Solution
+{
+    public:
+    int size(struct node* head){
+         struct node* curr=head;
+    int c=0;
+    while(curr!=NULL){
+        curr=curr->next;
+        c++;
+    }
+    return c;
+    }
+    struct node *reverse (struct node *head, int k)
+    { 
+        if(!head ){
+            return head;
+        }
+        struct node* prev=NULL;
+        struct node* curr=head;
+        struct node* forward=NULL;
+        int count =0;
+        while(curr!=NULL && count<k){
+            forward=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=forward;
+            count++;
+        }
+        if(forward){
+            head->next=reverse(forward,k);
+        }
+        return prev;
+        
+        
+    }
+};
