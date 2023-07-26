@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+class queue{
+    int front ,rear;
+    int arr[1000];
+     public:
+    queue(){
+         front=0;
+        rear=0; 
+    }
+   
+    void push(int x){
+     
+        arr[rear++]=x;
+        cout<<x<<" has been pushed"<<endl;
+        
+    }
+    int pop(){
+        if(front==-1){
+            return -1;
+        }
+        int x=arr[front];
+        front++;
+        cout<<x<<" has been popped"<<endl;
+        return x;
+    }
+   
+    
+};
+int main(){
+    queue q;
+    q.push(5);
+    q.pop();
+    q.push(4);
+    q.push(7);
+    q.pop();
+    return 0;
+}
+
