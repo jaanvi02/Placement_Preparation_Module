@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+// implement ATOI using recursion
+int flag=0;
+int solve(string str,int n){
+     
+   if (n == 0) {
+        if (str[n] == '-') {
+            flag = 1;
+            return 0;
+        }
+        return str[n] - '0';
+    }
+    if(str[n]==' '){
+        return solve(str,n-1);
+    }
+     if (str[n] < '0' || str[n] > '9') {
+      
+        return 0;
+     }
+    
+   
+    return str[n]-'0'+10*solve(str,n-1);
+}
+int main() {
+	// your code goes here
+	string str;
+	cin>>str;
+	int ans=solve(str,str.size()-1);
+	if(flag){
+	    ans=-1*ans;
+	}
+	cout<<ans<<endl;
+	return 0;
+}
