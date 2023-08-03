@@ -1,0 +1,27 @@
+class Solution {
+public:
+void solve(vector<int>&nums,int ind,vector<int>&v,vector<vector<int>>&ans,int target)
+{
+    if(ind==nums.size()){
+       if(target==0){
+           ans.push_back(v);
+       }
+        return;
+    }
+   
+    if(nums[ind]<=target){
+    v.push_back(nums[ind]);
+    solve(nums,ind,v,ans,target-nums[ind]);
+    v.pop_back();
+}
+    solve(nums,ind+1,v,ans,target);
+}
+    vector<vector<int>> combinationSum(vector<int>& nums, int target) {
+         vector<int>v;
+        vector<vector<int>>ans;
+        solve(nums,0,v,ans,target);
+        return ans;
+
+        
+    }
+};
