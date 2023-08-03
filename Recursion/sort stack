@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+using namespace std;
+void sort(stack<int>&s,int key){
+    if(s.empty() || s.top()>key){
+        s.push(key);
+        return;
+    }
+    int top=s.top();
+    s.pop();
+    sort(s,key);
+    s.push(top);
+}
+void solve(stack<int>&s){
+    if(s.empty()){
+        return ;
+    }
+    int top=s.top();
+    s.pop();
+    solve(s);
+    sort(s,top);
+}
+
+int main() {
+	// your code goes here
+	stack<int>s;
+	s.push(10);
+	s.push(4);
+	s.push(6);
+	s.push(7);
+	s.push(1);
+	solve(s);
+	while(!s.empty()){
+	    cout<<s.top()<<" ";
+	    s.pop();
+	}
+	return 0;
+}
